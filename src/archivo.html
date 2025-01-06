@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movies Recomendation - Model prediction</title>
+</head>
+<body>
+    <h2>Introduce your movie</h2>
+
+    <form action="/" method="post">
+        Movie's name: <input type="string" step="any" name="movie" required><br><br>
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if prediction != None %}
+        <h3>Recomendation: {{ prediction }}</h3>
+    {% endif %}
+</body>
+</html>

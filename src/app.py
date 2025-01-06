@@ -1,4 +1,5 @@
 # your code here
+import pandas as pd
 from pickle import load
 from flask import Flask,request,render_template
 from sklearn.feature_extraction.text import TfidfVectorizer

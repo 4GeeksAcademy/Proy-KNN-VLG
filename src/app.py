@@ -27,7 +27,7 @@ def index():
 
         # Obtain values from form
         movie_name = str(request.form["movie"])
-        prediction = str(model.predict(movie_name))
+        prediction = recommend(movie_name)
     else:
         prediction = None
 

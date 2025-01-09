@@ -8,18 +8,21 @@ from sklearn.neighbors import NearestNeighbors
 
 app = Flask(__name__)
 
-similarity = load(open("/workspaces/Proy-KNN-VLG/src/KNN_recomendations_movies_similarity.sav", "rb"))
+model = load(open("/workspaces/Proy-KNN-VLG/src/KNN_recomendations_movies.sav", "rb"))
 
 df=pd.read_csv("/workspaces/Proy-KNN-VLG/src/clean_data.csv")
+vectorizer = TfidfVectorizer()
+df_vectorized = vectorizer.fit_transform(df["tags"])
 
 def recommend(movie):
     movie_index = df[df["title"] == movie].index[0]
-    distances = similarity[movie_index]
-    movie_list = sorted(list(enumerate(distances)), reverse = True , key = lambda x: x[1])[1:6]
+    distances,indices = model.kneighbors(df_vectorized[movie_index])
+    movie_list = [(df["title"][i],distances[0][j]) for j,i in enumerate(indices[0])]
+    #sorted(list(enumerate(distances)), reverse = True , key = lambda x: x[1])[1:6]
     
-    for i in movie_list:
-        print(df.iloc[i[0]].title)
-
+    for i,distances in movie_list:
+        print("movie:{}".format(i))
+            
 
 @app.route("/", methods = ["GET", "POST"])
 def index():

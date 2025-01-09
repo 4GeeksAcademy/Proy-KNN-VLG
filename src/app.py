@@ -8,7 +8,7 @@ from sklearn.neighbors import NearestNeighbors
 
 app = Flask(__name__)
 
-model = load(open("/workspaces/Proy-KNN-VLG/src/KNN_recomendations_movies.sav", "rb"))
+similarity = load(open("/workspaces/Proy-KNN-VLG/src/KNN_recomendations_movies_similarity.sav", "rb"))
 
 df=pd.read_csv("/workspaces/Proy-KNN-VLG/src/clean_data.csv")
 

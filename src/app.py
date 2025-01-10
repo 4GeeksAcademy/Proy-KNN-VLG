@@ -8,9 +8,9 @@ from sklearn.neighbors import NearestNeighbors
 
 app = Flask(__name__)
 
-model = load(open("/workspaces/Proy-KNN-VLG/src/KNN_recomendations_movies.sav", "rb"))
+model = load(open(r"KNN_recomendations_movies.sav", "rb"))
 
-df=pd.read_csv("/workspaces/Proy-KNN-VLG/src/clean_data.csv")
+df=pd.read_csv(r"clean_data.csv")
 vectorizer = TfidfVectorizer()
 df_vectorized = vectorizer.fit_transform(df["tags"])
 

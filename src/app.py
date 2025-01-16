@@ -20,8 +20,9 @@ def recommend(movie):
     movie_list = [(df["title"][i],distances[0][j]) for j,i in enumerate(indices[0])]
     #sorted(list(enumerate(distances)), reverse = True , key = lambda x: x[1])[1:6]
     
-    for i,distances in movie_list:
-        print("movie:{}".format(i))
+    #for i,distances in movie_list:
+      #  print("movie:{}".format(i))
+    return movie_list[1:]
             
 
 @app.route("/", methods = ["GET", "POST"])
